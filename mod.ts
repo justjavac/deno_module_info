@@ -11,7 +11,7 @@ interface ModuleInfoResponse {
 
 export default async function moduleInfo(
   mod: string,
-): Promise<ModuleInfo> {
+): Promise<ModuleInfo | null> {
   const response = await fetch(
     `https://api.deno.land/modules/${mod}`,
   );
@@ -22,6 +22,6 @@ export default async function moduleInfo(
     return data;
   } else {
     console.error(`Error: error`);
-    Deno.exit(0);
+    return null;
   }
 }
