@@ -16,10 +16,12 @@ export default async function moduleInfo(
     `https://api.deno.land/modules/${mod}`,
   );
 
-  if (response.status === 404) {
+  const { success, error, data }: ModuleInfoResponse = await response.json();
+  
+  if (success) {
+    return data;
+  } else {
+    console.error(`Error: error`);
     return null;
   }
-
-  const result: ModuleInfoResponse = await response.json();
-  return result.data;
 }
