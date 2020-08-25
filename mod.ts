@@ -11,15 +11,17 @@ interface ModuleInfoResponse {
 
 export default async function moduleInfo(
   mod: string,
-): Promise<ModuleInfo | null> {
+): Promise<ModuleInfo> {
   const response = await fetch(
     `https://api.deno.land/modules/${mod}`,
   );
 
-  if (response.status === 404) {
-    return null;
+  const { success, error, data }: ModuleInfoResponse = await response.json();
+  
+  if (success) {
+    return data;
+  } else {
+    console.error(`Error: error`);
+    Deno.exit(0);
   }
-
-  const result: ModuleInfoResponse = await response.json();
-  return result.data;
 }
