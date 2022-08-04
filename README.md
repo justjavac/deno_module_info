@@ -33,4 +33,5 @@ deno run --allow-net https://deno.land/x/module_info/examples/std.ts
 
 ## License
 
-[deno_module_info](https://github.com/justjavac/deno_module_info) is released under the MIT License. See the bundled [LICENSE](./LICENSE) file for details.
+[deno_module_info](https://github.com/justjavac/deno_module_info) is released
+under the MIT License. See the bundled [LICENSE](./LICENSE) file for details.
