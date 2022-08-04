@@ -1,5 +1,4 @@
-import moduleInfo from "../mod.ts";
-import type { ModuleInfo } from "../mod.ts";
+import moduleInfo, { type ModuleInfo } from "../mod.ts";
 
 const result: ModuleInfo | null = await moduleInfo("std");
 
