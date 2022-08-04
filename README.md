@@ -9,8 +9,7 @@ Get module info of Deno from <https://deno.land/x>.
 ## Usage
 
 ```js
-import moduleInfo from 'https://deno.land/x/module_info/mod.ts';
-import type { ModuleInfo } from 'https://deno.land/x/module_info/mod.ts';
+import moduleInfo, { type ModuleInfo} from 'https://deno.land/x/module_info/mod.ts';
 
 await versionInfo('std');
 ```
