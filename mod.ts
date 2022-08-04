@@ -4,10 +4,17 @@ export interface ModuleInfo {
   star_count: number;
 }
 
-interface ModuleInfoResponse {
-  success: boolean;
+interface SuccessResponse {
+  success: true;
   data: ModuleInfo;
 }
+
+interface FailResponse {
+  success: false;
+  error: string;
+}
+
+type ModuleInfoResponse = SuccessResponse | FailResponse;
 
 export default async function moduleInfo(
   mod: string,
@@ -16,12 +23,12 @@ export default async function moduleInfo(
     `https://api.deno.land/modules/${mod}`,
   );
 
-  const { success, error, data }: ModuleInfoResponse = await response.json();
-  
-  if (success) {
-    return data;
+  const result: ModuleInfoResponse = await response.json();
+
+  if (result.success) {
+    return result.data;
   } else {
-    console.error(`Error: error`);
+    console.error("Error: %s", result.error);
     return null;
   }
 }
